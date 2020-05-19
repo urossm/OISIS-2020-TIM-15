@@ -1,1 +1,1 @@
-Ovde ubaciti prototipe dizajna za aplikaciju
+Finalna verzija prototipa dizajna za aplikaciju
