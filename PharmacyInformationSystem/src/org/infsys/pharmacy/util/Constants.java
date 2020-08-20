@@ -2,6 +2,7 @@ package org.infsys.pharmacy.util;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
@@ -29,6 +30,24 @@ public class Constants {
 	public static final String USERS_PATH = "data/users.obj";
 	public static final String MEDICINES_PATH = "data/medicines.obj";
 	public static final String PRESCRIPTIONS_PATH = "data/prescriptions.obj";
+	public static final String CATEGORIES = "Categories";
+	public static final String MEDICATIONS = "Medications";
+	public static final String PRESCRIPTIONS = "Prescriptions";
+	public static final String CART = "Cart";
+	public static final String ADMIN_PANEL = "Admin Panel";
+	public static final String USER_DATABASE = "User database";
+	public static final String REPORTS = "Reports";
+	public static final String EMPTY_PANEL = "Empty panel";
+	public static final String ADD_NEW_USER = "Add new user";
+	public static final String NAME = "Name";
+	public static final String FIRSTNAME = "First name";
+	public static final String LASTNAME = "Last name";
+	public static final String USER_TYPE = "User type";
+	public static final String REGISTER = "Register";
+	public static final String USER_EXISTS_ERROR_MSG = "User with entered username already exists!";
+	
+	//String arrays
+	public static final String[] USER_SORT_TYPES = new String[] {NAME, LASTNAME, USER_TYPE};
 	
 	//Dimensions
 	public static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -36,11 +55,17 @@ public class Constants {
 	
 	//Colors
 	public static final Color LIGHT_BLUE = new Color(0, 132, 255);
+	public static final Color TRANSPARENT_WHITE = new Color(1.0f, 1.0f, 1.0f, 0.5f);
 	
 	//Images
 	public static final ImageIcon BLUE_LOGO_IMAGE = new ImageIcon("resources/images/logo_blue.png");
 	public static final ImageIcon WHITE_LOGO_IMAGE = new ImageIcon("resources/images/logo_white.png");
 	public static final ImageIcon LOGIN_IMAGE = new ImageIcon("resources/images/login.png");
+	public static final ImageIcon CART_IMAGE = new ImageIcon(new ImageIcon("resources/images/Cart.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
+	public static final ImageIcon MEDICATIONS_IMAGE = new ImageIcon(new ImageIcon("resources/images/Medications.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
+	public static final ImageIcon PRESCRIPTIONS_IMAGE = new ImageIcon(new ImageIcon("resources/images/Prescription.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
+	public static final ImageIcon REPORTS_IMAGE = new ImageIcon(new ImageIcon("resources/images/Reports.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
+	public static final ImageIcon USER_DATABASE_IMAGE = new ImageIcon(new ImageIcon("resources/images/User database.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
 	
 	//Fonts
 	public static Font CUSTOM_FONT;

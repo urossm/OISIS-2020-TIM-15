@@ -35,8 +35,8 @@ public class Application {
 				
 				//Try to create 2 custom fonts from ttf/otf files
 				try {
-					Constants.setCustomFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/fonts/SF-UI-Display-Regular.ttf")).deriveFont(18f));
-					Constants.setCustomFontBold(Font.createFont(Font.TRUETYPE_FONT, new File("resources/fonts/SF-UI-Display-Bold.otf")).deriveFont(12f));
+					Constants.setCustomFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/fonts/SF-UI-Display-Regular.ttf")).deriveFont(24f));
+					Constants.setCustomFontBold(Font.createFont(Font.TRUETYPE_FONT, new File("resources/fonts/SF-UI-Display-Bold.otf")).deriveFont(10f));
 				} catch (IOException | FontFormatException e) {
 				    JOptionPane.showMessageDialog(null, Constants.RESOURCES_ERROR_MSG, Constants.ERROR_MSG_TITLE, JOptionPane.ERROR_MESSAGE);
 				    return;

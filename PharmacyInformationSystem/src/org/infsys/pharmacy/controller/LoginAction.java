@@ -45,12 +45,8 @@ public class LoginAction extends AbstractAction {
 			ApplicationSingleton.getInstance().setLoggedInUser(user);
 			MainFrame mainFrame;
 			
-			if (ApplicationSingleton.getInstance().getMainFrame() == null) {
-				mainFrame = new MainFrame();
-				ApplicationSingleton.getInstance().setMainFrame(mainFrame);
-			} else {
-				mainFrame = ApplicationSingleton.getInstance().getMainFrame();
-			}
+			mainFrame = new MainFrame();
+			ApplicationSingleton.getInstance().setMainFrame(mainFrame);
 			
 			mainFrame.setVisible(true);
 		} else {

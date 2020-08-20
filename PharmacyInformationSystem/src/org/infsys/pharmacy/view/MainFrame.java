@@ -1,6 +1,7 @@
 package org.infsys.pharmacy.view;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Image;
 
 import javax.swing.JFrame;
@@ -12,6 +13,10 @@ public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = -3641529791186380004L;
 	private JPanel contentPane;
+	private Sidebar sidebar;
+	private JPanel centralPanel;
+	private CardLayout cardLayout;
+	private UserDatabasePanel userDatabasePanel;
 
 	/**
 	 * Create the application's main window.
@@ -21,16 +26,33 @@ public class MainFrame extends JFrame {
 		setIconImage(Constants.BLUE_LOGO_IMAGE.getImage().getScaledInstance(32, 27, Image.SCALE_SMOOTH));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(3 * Constants.SCREEN_WIDTH / 4, 4 * Constants.SCREEN_HEIGHT / 5);
-//		setSize(600, 400);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		Sidebar sidebar = new Sidebar();
+		sidebar = new Sidebar();
 		contentPane.add(sidebar, BorderLayout.WEST);
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
+		cardLayout = new CardLayout(40, 40);
+		centralPanel = new JPanel(cardLayout);
+		contentPane.add(centralPanel, BorderLayout.CENTER);
+		
+		userDatabasePanel = new UserDatabasePanel();
+		
+		centralPanel.add(new JPanel(), Constants.EMPTY_PANEL);
+		centralPanel.add(userDatabasePanel, Constants.USER_DATABASE);
+	}
+	
+	public void showCard(String name) {
+		this.cardLayout.show(this.centralPanel, name);
+	}
+
+	public Sidebar getSidebar() {
+		return sidebar;
+	}
+
+	public UserDatabasePanel getUserDatabasePanel() {
+		return userDatabasePanel;
 	}
 }
