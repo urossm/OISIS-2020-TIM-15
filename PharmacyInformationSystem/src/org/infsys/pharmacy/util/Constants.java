@@ -45,9 +45,21 @@ public class Constants {
 	public static final String USER_TYPE = "User type";
 	public static final String REGISTER = "Register";
 	public static final String USER_EXISTS_ERROR_MSG = "User with entered username already exists!";
+	public static final String DETAILED_SEARCH = "Detailed search";
+	public static final String MANUFACTURER = "Manufacturer";
+	public static final String PRICE = "Price";
+	public static final String CODE = "Code";
+	public static final String PRESCRIPTION_NEEDED = "Prescription needed?";
+	public static final String ADD_NEW_MEDICATION = "Add new medication";
+	public static final String EDIT_MEDICATION = "Edit medication";
+	public static final String IS_ON_PRESCRIPTION = "Is on prescription?";
+	public static final String SAVE = "Save";
+	public static final String MEDICATION_CODE = "Medication code";
+	public static final String PRICE_FORMAT_ERROR_MSG = "Wrong format of entered price!";
 	
 	//String arrays
 	public static final String[] USER_SORT_TYPES = new String[] {NAME, LASTNAME, USER_TYPE};
+	public static final String[] MEDICATIONS_SORT_TYPES = new String[] {NAME, MANUFACTURER, PRICE};
 	
 	//Dimensions
 	public static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;

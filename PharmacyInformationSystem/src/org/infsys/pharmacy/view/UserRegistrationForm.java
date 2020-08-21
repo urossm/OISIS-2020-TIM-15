@@ -128,12 +128,4 @@ public class UserRegistrationForm extends JDialog {
 	public JComboBox<UserType> getUserTypeComboBox() {
 		return userTypeComboBox;
 	}
-	
-	public void resetForm() {
-		usernameTextField.setText("");
-		passwordTextField.setText("");
-		firstNameTextField.setText("");
-		lastNameTextField.setText("");
-		userTypeComboBox.setSelectedIndex(0);
-	}
 }

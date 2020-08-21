@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.infsys.pharmacy.ApplicationSingleton;
+import org.infsys.pharmacy.model.Medication;
 import org.infsys.pharmacy.model.User;
 
 public class DataLoader {
@@ -18,7 +19,6 @@ public class DataLoader {
 		File file = new File(Constants.USERS_PATH);
 		
 		if (file.exists()) {
-			
 			@SuppressWarnings("unchecked")
 			List<User> users = (List<User>) FileUtil.loadObjectFromFile(file);
 			
@@ -31,5 +31,20 @@ public class DataLoader {
 			ApplicationSingleton.getInstance().getUsers().put(Constants.ADMINISTRATOR.getUsername(), Constants.ADMINISTRATOR);
 			FileUtil.saveObjectInFile(users, file);
 		}
+		
+		//Retrieve medications
+		file = new File(Constants.MEDICINES_PATH);
+		
+		if (file.exists()) {
+			@SuppressWarnings("unchecked")
+			List<Medication> medications = (List<Medication>) FileUtil.loadObjectFromFile(file);
+			for (Medication medication : medications) {
+				ApplicationSingleton.getInstance().getMedications().put(medication.getCode(), medication);				
+			}
+		} else {
+			List<Medication> medications = new ArrayList<>();
+			FileUtil.saveObjectInFile(medications, file);
+		}
+		
 	}
 }

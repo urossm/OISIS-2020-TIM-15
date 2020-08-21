@@ -17,6 +17,7 @@ public class MainFrame extends JFrame {
 	private JPanel centralPanel;
 	private CardLayout cardLayout;
 	private UserDatabasePanel userDatabasePanel;
+	private MedicationsPanel medicationsPanel;
 
 	/**
 	 * Create the application's main window.
@@ -39,9 +40,11 @@ public class MainFrame extends JFrame {
 		contentPane.add(centralPanel, BorderLayout.CENTER);
 		
 		userDatabasePanel = new UserDatabasePanel();
+		medicationsPanel = new MedicationsPanel();
 		
 		centralPanel.add(new JPanel(), Constants.EMPTY_PANEL);
 		centralPanel.add(userDatabasePanel, Constants.USER_DATABASE);
+		centralPanel.add(medicationsPanel, Constants.MEDICATIONS);
 	}
 	
 	public void showCard(String name) {
@@ -54,5 +57,9 @@ public class MainFrame extends JFrame {
 
 	public UserDatabasePanel getUserDatabasePanel() {
 		return userDatabasePanel;
+	}
+
+	public MedicationsPanel getMedicationsPanel() {
+		return medicationsPanel;
 	}
 }

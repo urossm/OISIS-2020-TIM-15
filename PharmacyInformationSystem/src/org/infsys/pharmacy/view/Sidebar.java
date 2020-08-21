@@ -95,6 +95,11 @@ public class Sidebar extends JPanel {
 		add(logoutButton, "cell 0 9,gapy 0 20");
 	}
 	
+	public void selectDefaultButton() {
+		//Select medications button to display medications panel by default
+		medicationsButton.doClick();
+	}
+	
 	public JButton createNavigationButton(String name, ImageIcon icon) {
 		JButton navigationButton = new JButton(new NavigationButtonSelectedAction(name));
 		navigationButton.setIcon(icon);

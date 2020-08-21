@@ -40,7 +40,6 @@ public class AddUserAction extends AbstractAction {
 			ApplicationSingleton.getInstance().getUsers().put(user.getUsername(), user);
 			FileUtil.saveObjectInFile(new ArrayList<>(ApplicationSingleton.getInstance().getUsers().values()), new File(Constants.USERS_PATH));
 			ApplicationSingleton.getInstance().getMainFrame().getUserDatabasePanel().addRow(user);
-			userRegistrationForm.resetForm();
 			userRegistrationForm.dispose();
 		}
 	}

@@ -7,11 +7,11 @@ import java.util.Map;
 public class Prescription implements Serializable  {
 	
 	private static final long serialVersionUID = -3384104550969269280L;
-	private int code;
+	private Integer code;
 	private String doctorId;
 	private String patientId;
 	private LocalDateTime dateAndTime;
-	private Map<Medicine, Integer> medicinesWithAmounts;
+	private Map<Medication, Integer> medicinesWithAmounts;
 	private float totalPrice;
 	
 	public Prescription() {
@@ -24,7 +24,7 @@ public class Prescription implements Serializable  {
 		this.dateAndTime = LocalDateTime.now();
 	}
 
-	public int getCode() {
+	public Integer getCode() {
 		return code;
 	}
 
@@ -56,11 +56,11 @@ public class Prescription implements Serializable  {
 		this.dateAndTime = dateAndTime;
 	}
 
-	public Map<Medicine, Integer> getMedicinesWithAmounts() {
+	public Map<Medication, Integer> getMedicinesWithAmounts() {
 		return medicinesWithAmounts;
 	}
 
-	public void setMedicinesWithAmounts(Map<Medicine, Integer> medicinesWithAmounts) {
+	public void setMedicinesWithAmounts(Map<Medication, Integer> medicinesWithAmounts) {
 		this.medicinesWithAmounts = medicinesWithAmounts;
 	}
 

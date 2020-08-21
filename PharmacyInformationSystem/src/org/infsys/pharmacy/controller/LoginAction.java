@@ -47,6 +47,7 @@ public class LoginAction extends AbstractAction {
 			
 			mainFrame = new MainFrame();
 			ApplicationSingleton.getInstance().setMainFrame(mainFrame);
+			mainFrame.getSidebar().selectDefaultButton();
 			
 			mainFrame.setVisible(true);
 		} else {

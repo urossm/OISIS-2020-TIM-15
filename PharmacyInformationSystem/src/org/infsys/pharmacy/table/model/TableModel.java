@@ -19,7 +19,7 @@ public class TableModel extends DefaultTableModel {
         if (this.rows == null) this.rows = new ArrayList<>();
         for (final Row row : this.rows) {
             if (row.getFields().get(arg0) != null) {
-                return row.getFields().get(arg0).getClass();
+                return row.getFields().get(arg0).getValue().getClass();
             }
         }
         return null;
