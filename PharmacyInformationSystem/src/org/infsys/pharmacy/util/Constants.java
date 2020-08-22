@@ -115,11 +115,20 @@ public class Constants {
 	public static final String PRESCRIPTION_CODE_REQUIRED = "Prescription code must be entered!";
 	public static final String PRESCRIPTION_NOT_EXISTS = "Prescription with entered code does not exist!";
 	public static final String EMPTY_CART = "Cart can not be empty!";
+	public static final String MEDICATIONS_REPORT = "Medications report";
+	public static final String MEDICATIONS_SOLD_BY = "Medications sold by";
+	public static final String SELECT_MANUFACTURER = "Select manufacturer";
+	public static final String SELECT_PHARMACIST = "Select pharmacist";
+	public static final String ALL = "All";
+	public static final String PHARMACIST = "Pharmacist";
+	public static final String QUANTITY_SOLD = "Quantity sold";
+	public static final String TOTAL_PROFIT = "Total profit";
 	
 	//String arrays
 	public static final String[] USER_SORT_TYPES = new String[] {NAME, LASTNAME, USER_TYPE};
 	public static final String[] MEDICATIONS_SORT_TYPES = new String[] {NAME, MANUFACTURER, PRICE};
 	public static final String[] PRESCRIPTIONS_SORT_TYPES = new String[] {CODE, DOCTOR, DATE};
+	public static final String[] REPORT_TYPES = new String[] {ALL, MANUFACTURER, PHARMACIST};
 	
 	//Dimensions
 	public static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;

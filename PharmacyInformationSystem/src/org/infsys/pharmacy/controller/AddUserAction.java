@@ -41,6 +41,10 @@ public class AddUserAction extends AbstractAction {
 			FileUtil.saveObjectInFile(new ArrayList<>(ApplicationSingleton.getInstance().getUsers().values()), new File(Constants.USERS_PATH));
 			ApplicationSingleton.getInstance().getMainFrame().getUserDatabasePanel().addRow(user);
 			userRegistrationForm.dispose();
+			
+			if (user.getType() == UserType.PHARMACIST) {
+				ApplicationSingleton.getInstance().getMainFrame().getReportsPanel().updatePharmacistsList();
+			}
 		}
 	}
 }

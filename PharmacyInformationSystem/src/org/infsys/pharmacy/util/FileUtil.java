@@ -31,7 +31,6 @@ public class FileUtil {
 		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
 			objectOutputStream.writeObject(object);
 		} catch (IOException e) {
-			e.printStackTrace();
 			return;
 		}
 	}

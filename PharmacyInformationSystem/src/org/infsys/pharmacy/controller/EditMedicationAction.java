@@ -59,5 +59,7 @@ public class EditMedicationAction extends AbstractAction {
 		FileUtil.saveObjectInFile(new ArrayList<>(ApplicationSingleton.getInstance().getMedications().values()), new File(Constants.MEDICATIONS_PATH));
 		ApplicationSingleton.getInstance().getMainFrame().getMedicationsPanel().updateRows();
 		editMedicationForm.dispose();
+		
+		ApplicationSingleton.getInstance().getMainFrame().getReportsPanel().updateManufacturersList();
 	}
 }

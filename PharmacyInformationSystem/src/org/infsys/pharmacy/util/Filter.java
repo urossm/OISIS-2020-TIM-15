@@ -23,7 +23,7 @@ public class Filter {
 		return rows.stream().filter(row -> { 
 			for (Field field : row.getFields()) {
 				if (field.getName().equals(searchBy)) {
-					float floatNumber = (float) field.getValue();
+					float floatNumber = Float.parseFloat(((String)field.getValue()).substring(1));
 					if (minValue <= floatNumber && floatNumber <= maxValue) {
 						return true;
 					} else {
