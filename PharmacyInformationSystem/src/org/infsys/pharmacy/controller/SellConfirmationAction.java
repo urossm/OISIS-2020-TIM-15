@@ -2,6 +2,7 @@ package org.infsys.pharmacy.controller;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
@@ -25,7 +26,7 @@ public class SellConfirmationAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Map<String, Integer> medicinesWithAmounts = cartPanel.getMedicinesWithAmounts();
+		Map<String, Integer> medicinesWithAmounts = new HashMap<>(cartPanel.getMedicinesWithAmounts());
 		
 		if (medicinesWithAmounts.isEmpty()) {
 			JOptionPane.showMessageDialog(null, Constants.EMPTY_CART, Constants.ERROR_MSG_TITLE, JOptionPane.ERROR_MESSAGE);
@@ -36,5 +37,7 @@ public class SellConfirmationAction extends AbstractAction {
 		ApplicationSingleton.getInstance().getBills().add(bill);
 		FileUtil.saveObjectInFile(ApplicationSingleton.getInstance().getBills(), new File(Constants.BILLS_PATH));
 		cartPanel.resetCart();
+		
+		ApplicationSingleton.getInstance().getMainFrame().getReportsPanel().updateRows();
 	}
 }
