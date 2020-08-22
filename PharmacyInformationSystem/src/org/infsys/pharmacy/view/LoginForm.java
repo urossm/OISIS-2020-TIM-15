@@ -5,15 +5,16 @@ import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import org.infsys.pharmacy.controller.LoginAction;
 import org.infsys.pharmacy.util.Constants;
 
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 
 public class LoginForm extends JPanel {
 
@@ -22,7 +23,7 @@ public class LoginForm extends JPanel {
 	private JTextField usernameTextField;
 	private JLabel passwordLabel;
 	private JLabel usernameLabel;
-	private JTextField passwordTextField;
+	private JPasswordField passwordField;
 	private JButton loginButton;
 
 	/**
@@ -48,9 +49,9 @@ public class LoginForm extends JPanel {
 		passwordLabel.setFont(passwordLabel.getFont().deriveFont(24f));
 		add(passwordLabel, "cell 0 3,alignx left");
 		
-		passwordTextField = new JTextField();
-		add(passwordTextField, "cell 0 4,growx,gapy 0 30");
-		passwordTextField.setColumns(10);
+		passwordField = new JPasswordField();
+		add(passwordField, "cell 0 4,growx,gapy 0 30");
+		passwordField.setColumns(10);
 		
 		loginButton = new JButton(new LoginAction(Constants.LOGIN));
 		loginButton.setBackground(Constants.LIGHT_BLUE);
@@ -65,11 +66,11 @@ public class LoginForm extends JPanel {
 	}
 	
 	public String getEnteredPassword() {
-		return passwordTextField.getText();
+		return new String(passwordField.getPassword());
 	}
 	
 	public void resetForm() {
 		usernameTextField.setText("");
-		passwordTextField.setText("");
+		passwordField.setText("");
 	}
 }

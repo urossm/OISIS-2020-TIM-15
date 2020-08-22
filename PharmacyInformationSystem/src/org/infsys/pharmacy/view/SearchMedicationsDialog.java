@@ -39,7 +39,7 @@ public class SearchMedicationsDialog extends JDialog {
 
 	public SearchMedicationsDialog() {
 		super(ApplicationSingleton.getInstance().getMainFrame(), true);
-		setTitle("Add new medication");
+		setTitle(Constants.SEARCH_MEDICATIONS);
 		setSize(Constants.SCREEN_WIDTH / 5, 2 * Constants.SCREEN_HEIGHT / 3);
 		setMinimumSize(new Dimension(Constants.SCREEN_WIDTH / 5, 0));
 		setLocationRelativeTo(ApplicationSingleton.getInstance().getMainFrame());

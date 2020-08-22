@@ -37,7 +37,7 @@ public class AddMedicationForm extends JDialog {
 
 	public AddMedicationForm() {
 		super(ApplicationSingleton.getInstance().getMainFrame(), true);
-		setTitle("User registration");
+		setTitle(Constants.ADD_NEW_MEDICATION);
 		setSize(Constants.SCREEN_WIDTH / 5, 2 * Constants.SCREEN_HEIGHT / 3);
 		setMinimumSize(new Dimension(Constants.SCREEN_WIDTH / 5, 0));
 		setLocationRelativeTo(ApplicationSingleton.getInstance().getMainFrame());
@@ -87,7 +87,7 @@ public class AddMedicationForm extends JDialog {
 		contentPanel.add(prescriptionNeededCheckBox, "cell 0 8,alignx left");
 		
 		buttonPane = new JPanel();
-		buttonPane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		
 		saveButton = new JButton(new AddMedicationAction(Constants.SAVE, this));

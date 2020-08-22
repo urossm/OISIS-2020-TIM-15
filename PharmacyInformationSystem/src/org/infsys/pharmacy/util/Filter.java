@@ -11,7 +11,7 @@ public class Filter {
 	public static List<Row> filterByString(List<Row> rows, String searchBy, String filter) {
 		return rows.stream().filter(row -> { 
 			for (Field field : row.getFields()) {
-				if (field.getName().equals(searchBy) && ((String) field.getValue()).toLowerCase().contains(filter.toLowerCase())) {
+				if (field.getName().equals(searchBy) && field.getValue().toString().toLowerCase().contains(filter.toLowerCase())) {
 					return true;
 				}
 			}

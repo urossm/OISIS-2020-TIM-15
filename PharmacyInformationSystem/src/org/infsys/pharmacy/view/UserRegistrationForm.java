@@ -96,7 +96,7 @@ public class UserRegistrationForm extends JDialog {
 		contentPanel.add(userTypeComboBox, "cell 0 9,alignx left");
 		
 		buttonPane = new JPanel();
-		buttonPane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		
 		registerButton = new JButton(new AddUserAction(Constants.REGISTER, this));

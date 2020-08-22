@@ -29,7 +29,7 @@ public class ChooseMedicationCodeDialog extends JDialog {
 
 	public ChooseMedicationCodeDialog() {
 		super(ApplicationSingleton.getInstance().getMainFrame(), true);
-		setTitle("Edit medication - Choose code");
+		setTitle(Constants.EDIT_MEDICATION_CODE);
 		setSize(Constants.SCREEN_WIDTH / 6, 2 * Constants.SCREEN_HEIGHT / 3);
 		setMinimumSize(new Dimension(Constants.SCREEN_WIDTH / 6, 0));
 		setLocationRelativeTo(ApplicationSingleton.getInstance().getMainFrame());

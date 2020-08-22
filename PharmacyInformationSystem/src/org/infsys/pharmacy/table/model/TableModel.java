@@ -54,6 +54,15 @@ public class TableModel extends DefaultTableModel {
         if (field == null || field.getValue() == null) {
             return null;
         }
+        
+        if (field.getValue() instanceof String) {
+        	String value = (String) field.getValue();
+        	if (value.contains("\n")) {
+        		value = value.replace("\n", "<br>");
+        		value = "<html>" + value + "</html>";
+        		return value;
+        	}
+        }
 
         return field.getValue();
     }
@@ -81,4 +90,8 @@ public class TableModel extends DefaultTableModel {
     	}
     	this.fireTableDataChanged();
     }
+
+	public List<Row> getRows() {
+		return rows;
+	}
 }

@@ -17,7 +17,7 @@ import org.infsys.pharmacy.view.UserRegistrationForm;
 public class AddUserAction extends AbstractAction {
 	
 	private static final long serialVersionUID = -3283704382238240057L;
-	public UserRegistrationForm userRegistrationForm;
+	private UserRegistrationForm userRegistrationForm;
 
 	public AddUserAction(String name, UserRegistrationForm userRegistrationForm) {
 		putValue(NAME, name);

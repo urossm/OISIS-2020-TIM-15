@@ -16,7 +16,7 @@ import org.infsys.pharmacy.view.AddMedicationForm;
 public class AddMedicationAction extends AbstractAction {
 	
 	private static final long serialVersionUID = 9117710766645677927L;
-	public AddMedicationForm addMedicationForm;
+	private AddMedicationForm addMedicationForm;
 
 	public AddMedicationAction(String name, AddMedicationForm addMedicationForm) {
 		putValue(NAME, name);

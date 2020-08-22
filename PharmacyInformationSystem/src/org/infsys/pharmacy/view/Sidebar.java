@@ -118,7 +118,7 @@ public class Sidebar extends JPanel {
 	public void selectButton(String name) {		
 		for (Map.Entry<String, JButton> entry : this.navigationButtons.entrySet()) {
 			if (entry.getKey().equals(name)) {
-				entry.getValue().setForeground(Color.WHITE);
+				entry.getValue().setForeground(new Color(1.0f, 1.0f, 1.0f, 0.9f));
 				entry.getValue().setFont(Constants.CUSTOM_FONT_BOLD.deriveFont(12f));
 				entry.getValue().setBorderPainted(true);
 				entry.getValue().setBorder(BorderFactory.createCompoundBorder(

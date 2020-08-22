@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.ImageIcon;
 
@@ -56,10 +57,47 @@ public class Constants {
 	public static final String SAVE = "Save";
 	public static final String MEDICATION_CODE = "Medication code";
 	public static final String PRICE_FORMAT_ERROR_MSG = "Wrong format of entered price!";
+	public static final String OK = "Ok";
+	public static final String CHOOSE_CODE = "Choose medication code";
+	public static final String SEARCH_MEDICATIONS = "Search medications";
+	public static final String SEARCH_BY_MEDICATION_CODE = "Search by medication code";
+	public static final String SEARCH_BY_NAME = "Search by name";
+	public static final String SEARCH_BY_MANUFACTURER = "Search by manufacturer";
+	public static final String PRICE_RANGE = "Price range";
+	public static final String MIN = "Min";
+	public static final String MAX = "Max";
+	public static final String ADD_NEW_PRESCRIPTION = "Add new prescription";
+	public static final String DATE = "Date";
+	public static final String DOCTOR = "Doctor";
+	public static final String PERSONAL_NUMBER = "Personal number";
+	public static final String DOCTOR_ID = "Doctor ID";
+	public static final String TOTAL_PRICE = "Total price";
+	public static final String DATE_TIME = "Date & Time";
+	public static final String CREATE_PRESCRIPTION = "Create prescription";
+	public static final String ADD_MEDICATION = "Add medication";
+	public static final String ADD_RECEIPT = "Add receipt";
+	public static final String RECEIPT_CODE = "Receipt code";
+	public static final String PATIENT_PERSONAL_NUMBER = "Patient's personal number";
+	public static final String EDIT_MEDICATION_CODE = "Edit medication - Choose code";
+	public static final String CHOOSE_MEDICATION = "Choose medication and enter quantity";
+	public static final String ADD = "Add";
+	public static final String MEDICATION_NAME = "Medication name";
+	public static final String QUANTITY = "Quantity";
+	public static final String QUANTITY_FORMAT_ERROR_MSG = "Wrong format of entered quantity!";
+	public static final String QUANTITY_REQUIRED = "Quantity must be entered!";
+	public static final String PERSONAL_NUMBER_REQUIRED = "Personal number must be entered!";
+	public static final String MEDICATION_REQUIRED = "Please add atleast one medication on prescription!";
+	public static final String SEARCH_BY_PRESCRIPTION_CODE = "Search by prescription code";
+	public static final String SEARCH_BY_DOCTOR = "Search by doctor";
+	public static final String SEARCH_BY_PERSONAL_NUMBER = "Search by personal number";
+	public static final String SEARCH_BY_MEDICATION = "Search by medication";
+	public static final String SEARCH_PRESCRIPTIONS = "Search prescriptions";
+	public static final String MEDICATION = "Medication";
 	
 	//String arrays
 	public static final String[] USER_SORT_TYPES = new String[] {NAME, LASTNAME, USER_TYPE};
 	public static final String[] MEDICATIONS_SORT_TYPES = new String[] {NAME, MANUFACTURER, PRICE};
+	public static final String[] PRESCRIPTIONS_SORT_TYPES = new String[] {CODE, DOCTOR, DATE};
 	
 	//Dimensions
 	public static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -78,6 +116,10 @@ public class Constants {
 	public static final ImageIcon PRESCRIPTIONS_IMAGE = new ImageIcon(new ImageIcon("resources/images/Prescription.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
 	public static final ImageIcon REPORTS_IMAGE = new ImageIcon(new ImageIcon("resources/images/Reports.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
 	public static final ImageIcon USER_DATABASE_IMAGE = new ImageIcon(new ImageIcon("resources/images/User database.png").getImage().getScaledInstance(26, 32, Image.SCALE_SMOOTH));
+	public static final ImageIcon SEARCH_IMAGE = new ImageIcon("resources/images/search.png");
+	
+	//Date formats
+	public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 	
 	//Fonts
 	public static Font CUSTOM_FONT;

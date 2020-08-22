@@ -21,6 +21,7 @@ public class ScrollableTable extends JScrollPane {
 		this.table = new JTable(this.tableModel);
 		this.table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.table.getTableHeader().setReorderingAllowed(false);
+		this.table.setFont(this.table.getFont().deriveFont(18f));
 		this.table.getTableHeader().setForeground(Constants.LIGHT_BLUE);
 		this.setViewportView(this.table);
 	}
@@ -31,5 +32,9 @@ public class ScrollableTable extends JScrollPane {
 	
 	public void addRow(Row row) {
 		this.tableModel.addRow(row);
+	}
+	
+	public List<Row> getRows() {
+		return this.tableModel.getRows();
 	}
 }

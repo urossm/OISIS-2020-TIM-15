@@ -1,9 +1,12 @@
 package org.infsys.pharmacy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.infsys.pharmacy.model.Medication;
+import org.infsys.pharmacy.model.Prescription;
 import org.infsys.pharmacy.model.User;
 import org.infsys.pharmacy.view.LoginFrame;
 import org.infsys.pharmacy.view.MainFrame;
@@ -19,6 +22,7 @@ public class ApplicationSingleton {
 	private MainFrame mainFrame;
 	private Map<String, User> users;
 	private Map<String, Medication> medications;
+	private List<Prescription> prescriptions;
 	private User loggedInUser;
 	
 	private ApplicationSingleton() {	
@@ -56,6 +60,17 @@ public class ApplicationSingleton {
 			this.medications = new HashMap<>();
 		}
 		return medications;
+	}
+
+	public List<Prescription> getPrescriptions() {
+		if (this.prescriptions == null) {
+			this.prescriptions = new ArrayList<>();
+		}
+		return prescriptions;
+	}
+
+	public void setPrescriptions(List<Prescription> prescriptions) {
+		this.prescriptions = prescriptions;
 	}
 
 	public User getLoggedInUser() {

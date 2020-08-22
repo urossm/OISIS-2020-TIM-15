@@ -15,8 +15,10 @@ import javax.swing.JPanel;
 
 import org.infsys.pharmacy.ApplicationSingleton;
 import org.infsys.pharmacy.controller.OpenAddMedicationDialogAction;
+import org.infsys.pharmacy.controller.OpenChooseMedicationCodeDialog;
 import org.infsys.pharmacy.controller.OpenMedicationsDetailedSearchDialogAction;
 import org.infsys.pharmacy.model.Medication;
+import org.infsys.pharmacy.model.UserType;
 import org.infsys.pharmacy.table.model.Field;
 import org.infsys.pharmacy.table.model.Row;
 import org.infsys.pharmacy.table.view.ScrollableTable;
@@ -56,19 +58,21 @@ public class MedicationsPanel extends JPanel {
 		scrollableTable = new ScrollableTable(this.extractRowsFromMedicationsList(Constants.MEDICATIONS_SORT_TYPES[0]));
 		add(scrollableTable, "cell 0 2 2 1,grow");
 		
-		addMedicationButton = new JButton(new OpenAddMedicationDialogAction(Constants.ADD_NEW_MEDICATION));
-		addMedicationButton.setBackground(Constants.LIGHT_BLUE);
-		addMedicationButton.setForeground(Color.WHITE);
-		addMedicationButton.setFont(Constants.CUSTOM_FONT_BOLD);
-		addMedicationButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
-		add(addMedicationButton, "flowx,cell 0 3, gapy 20 0");
-		
-		editMedicationButton = new JButton(Constants.EDIT_MEDICATION);
-		editMedicationButton.setBackground(Constants.LIGHT_BLUE);
-		editMedicationButton.setForeground(Color.WHITE);
-		editMedicationButton.setFont(Constants.CUSTOM_FONT_BOLD);
-		editMedicationButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
-		add(editMedicationButton, "cell 0 3, gapy 20 0");
+		if (ApplicationSingleton.getInstance().getLoggedInUser().getType() != UserType.DOCTOR) {
+			addMedicationButton = new JButton(new OpenAddMedicationDialogAction(Constants.ADD_NEW_MEDICATION));
+			addMedicationButton.setBackground(Constants.LIGHT_BLUE);
+			addMedicationButton.setForeground(Color.WHITE);
+			addMedicationButton.setFont(Constants.CUSTOM_FONT_BOLD);
+			addMedicationButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+			add(addMedicationButton, "flowx,cell 0 3, gapy 20 0");
+			
+			editMedicationButton = new JButton(new OpenChooseMedicationCodeDialog(Constants.EDIT_MEDICATION));
+			editMedicationButton.setBackground(Constants.LIGHT_BLUE);
+			editMedicationButton.setForeground(Color.WHITE);
+			editMedicationButton.setFont(Constants.CUSTOM_FONT_BOLD);
+			editMedicationButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+			add(editMedicationButton, "cell 0 3, gapy 20 0");	
+		}
 		
 		sortTypes.addItemListener(new ItemListener() {
 			
@@ -84,6 +88,14 @@ public class MedicationsPanel extends JPanel {
 	
 	public void addRow(Medication medication) {
 		this.scrollableTable.addRow(this.convertMedicationToRow(medication));
+	}
+	
+	public void updateRows() {
+		this.updateRows(extractRowsFromMedicationsList((String) sortTypes.getSelectedItem()));
+	}
+	
+	public void updateRows(List<Row> rows) {
+		this.scrollableTable.updateModel(rows);
 	}
 	
 	public List<Row> extractRowsFromMedicationsList(String sortBy) {
@@ -127,5 +139,9 @@ public class MedicationsPanel extends JPanel {
 		row.getFields().add(prescriptionNeededField);
 		
 		return row;
+	}
+
+	public JComboBox<String> getSortTypes() {
+		return sortTypes;
 	}
 }

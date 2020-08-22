@@ -1,34 +1,40 @@
 package org.infsys.pharmacy.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Map;
+
+import org.infsys.pharmacy.ApplicationSingleton;
 
 public class Prescription implements Serializable  {
 	
 	private static final long serialVersionUID = -3384104550969269280L;
 	private Integer code;
 	private String doctorId;
-	private String patientId;
+	private String patientPersonalNumber;
 	private LocalDateTime dateAndTime;
-	private Map<Medication, Integer> medicinesWithAmounts;
-	private float totalPrice;
+	private Map<String, Integer> medicinesWithAmounts;
 	
 	public Prescription() {
 	}
 
-	public Prescription(int code, String doctorId, String patientId) {
-		this.code = code;
-		this.doctorId = doctorId;
-		this.patientId = patientId;
+	public Prescription(String patientId, Map<String, Integer> medicinesWithAmounts) {
+		this.code = ApplicationSingleton.getInstance().getPrescriptions().size() + 1;
+		
+		//Take doctor's username as doctor ID
+		this.doctorId = ApplicationSingleton.getInstance().getLoggedInUser().getUsername();
+		
+		this.patientPersonalNumber = patientId;
 		this.dateAndTime = LocalDateTime.now();
+		this.medicinesWithAmounts = medicinesWithAmounts;
 	}
 
 	public Integer getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 
@@ -40,12 +46,12 @@ public class Prescription implements Serializable  {
 		this.doctorId = doctorId;
 	}
 
-	public String getPatientId() {
-		return patientId;
+	public String getPatientPersonalNumber() {
+		return patientPersonalNumber;
 	}
 
-	public void setPatientId(String patientId) {
-		this.patientId = patientId;
+	public void setPatientPersonalNumber(String patientPersonalNumber) {
+		this.patientPersonalNumber = patientPersonalNumber;
 	}
 
 	public LocalDateTime getDateAndTime() {
@@ -55,20 +61,33 @@ public class Prescription implements Serializable  {
 	public void setDateAndTime(LocalDateTime dateAndTime) {
 		this.dateAndTime = dateAndTime;
 	}
-
-	public Map<Medication, Integer> getMedicinesWithAmounts() {
+	
+	public Map<String, Integer> getMedicinesWithAmounts() {
 		return medicinesWithAmounts;
 	}
 
-	public void setMedicinesWithAmounts(Map<Medication, Integer> medicinesWithAmounts) {
+	public void setMedicinesWithAmounts(Map<String, Integer> medicinesWithAmounts) {
 		this.medicinesWithAmounts = medicinesWithAmounts;
 	}
 
 	public float getTotalPrice() {
-		return totalPrice;
+		float totalPrice = 0.0f;
+		for(String medicationCode : this.medicinesWithAmounts.keySet()) {
+			Medication medication = ApplicationSingleton.getInstance().getMedications().get(medicationCode);
+			totalPrice += medication.getPrice() * this.medicinesWithAmounts.get(medicationCode);
+		}
+		return BigDecimal.valueOf(totalPrice).setScale(1, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
-
-	public void setTotalPrice(float totalPrice) {
-		this.totalPrice = totalPrice;
+	
+	public String medicationsWithAmountsToString() {
+		StringBuilder medications = new StringBuilder();
+		for(String medicationCode : this.medicinesWithAmounts.keySet()) {
+			Medication medication = ApplicationSingleton.getInstance().getMedications().get(medicationCode);
+			medications.append(medication.getName());
+			medications.append("[" + this.medicinesWithAmounts.get(medicationCode));
+			medications.append("]");
+			medications.append("\n");
+		}
+		return medications.substring(0, medications.length() - 1);
 	}
 }
