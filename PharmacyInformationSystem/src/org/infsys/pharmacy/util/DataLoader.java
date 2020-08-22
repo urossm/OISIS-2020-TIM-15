@@ -34,7 +34,7 @@ public class DataLoader {
 		}
 		
 		//Retrieve medications
-		file = new File(Constants.MEDICINES_PATH);
+		file = new File(Constants.MEDICATIONS_PATH);
 		
 		if (file.exists()) {
 			@SuppressWarnings("unchecked")

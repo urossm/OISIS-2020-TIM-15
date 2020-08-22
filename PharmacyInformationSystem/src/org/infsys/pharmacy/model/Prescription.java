@@ -15,6 +15,7 @@ public class Prescription implements Serializable  {
 	private String patientPersonalNumber;
 	private LocalDateTime dateAndTime;
 	private Map<String, Integer> medicinesWithAmounts;
+	private boolean logicallyDeleted;
 	
 	public Prescription() {
 	}
@@ -68,6 +69,14 @@ public class Prescription implements Serializable  {
 
 	public void setMedicinesWithAmounts(Map<String, Integer> medicinesWithAmounts) {
 		this.medicinesWithAmounts = medicinesWithAmounts;
+	}
+	
+	public boolean isLogicallyDeleted() {
+		return logicallyDeleted;
+	}
+
+	public void setLogicallyDeleted(boolean logicallyDeleted) {
+		this.logicallyDeleted = logicallyDeleted;
 	}
 
 	public float getTotalPrice() {

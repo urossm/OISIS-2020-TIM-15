@@ -42,7 +42,7 @@ public class AddMedicationAction extends AbstractAction {
 				price);
 		
 		ApplicationSingleton.getInstance().getMedications().put(medication.getCode(), medication);
-		FileUtil.saveObjectInFile(new ArrayList<>(ApplicationSingleton.getInstance().getMedications().values()), new File(Constants.MEDICINES_PATH));
+		FileUtil.saveObjectInFile(new ArrayList<>(ApplicationSingleton.getInstance().getMedications().values()), new File(Constants.MEDICATIONS_PATH));
 		ApplicationSingleton.getInstance().getMainFrame().getMedicationsPanel().addRow(medication);
 		addMedicationForm.dispose();
 	}

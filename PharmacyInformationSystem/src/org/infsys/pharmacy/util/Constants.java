@@ -29,7 +29,7 @@ public class Constants {
 	public static final String USERNAME_EMPTY_ERROR_MSG = "Username can not be empty!";
 	public static final String PASSWORD_EMPTY_ERROR_MSG = "Password can not be empty!";
 	public static final String USERS_PATH = "data/users.obj";
-	public static final String MEDICINES_PATH = "data/medicines.obj";
+	public static final String MEDICATIONS_PATH = "data/medicines.obj";
 	public static final String PRESCRIPTIONS_PATH = "data/prescriptions.obj";
 	public static final String CATEGORIES = "Categories";
 	public static final String MEDICATIONS = "Medications";
@@ -93,6 +93,16 @@ public class Constants {
 	public static final String SEARCH_BY_MEDICATION = "Search by medication";
 	public static final String SEARCH_PRESCRIPTIONS = "Search prescriptions";
 	public static final String MEDICATION = "Medication";
+	public static final String DELETED = "Deleted";
+	public static final String DELETE_USER = "Delete user";
+	public static final String DELETE_MEDICATION = "Delete medication";
+	public static final String DELETE_PRESCRIPTION = "Delete prescription";
+	public static final String DELETE_NOT_SELECTED_ERROR_MSG = "Please select row of the entity you want to delete!";
+	public static final String USER_DELETE_CONFIRMATION_MSG = "Are you sure you want to delete selected user?";
+	public static final String DELETE_CONFIRMATION_TITLE = "Delete confirmation"; 
+	public static final String MEDICATION_DELETE_CONFIRMATION_MSG = "Are you sure you want to delete selected medication? "
+			+ "If you do so, all prescriptions with selected medication will be also removed.";
+	public static final String PRESCRIPTION_DELETE_CONFIRMATION_MSG = "Are you sure you want to delete selected prescription?";
 	
 	//String arrays
 	public static final String[] USER_SORT_TYPES = new String[] {NAME, LASTNAME, USER_TYPE};

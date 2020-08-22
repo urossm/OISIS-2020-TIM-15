@@ -14,7 +14,7 @@ public class Authentication {
 	public static User authenticate(String username, String password) {
 		if (ApplicationSingleton.getInstance().getUsers().containsKey(username)) {
 			User user = ApplicationSingleton.getInstance().getUsers().get(username);
-			if (password.equals(user.getPassword())) {
+			if (password.equals(user.getPassword()) && !user.isLogicallyDeleted()) {
 				return user;
 			} else {
 				return null;

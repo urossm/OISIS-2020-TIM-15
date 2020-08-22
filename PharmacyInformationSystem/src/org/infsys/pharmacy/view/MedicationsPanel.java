@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.infsys.pharmacy.ApplicationSingleton;
+import org.infsys.pharmacy.controller.DeleteMedicationAction;
 import org.infsys.pharmacy.controller.OpenAddMedicationDialogAction;
 import org.infsys.pharmacy.controller.OpenChooseMedicationCodeDialog;
 import org.infsys.pharmacy.controller.OpenMedicationsDetailedSearchDialogAction;
@@ -35,9 +36,10 @@ public class MedicationsPanel extends JPanel {
 	private ScrollableTable scrollableTable;
 	private JButton addMedicationButton;
 	private JButton editMedicationButton;
+	private JButton deleteMedicationButton;
 
 	public MedicationsPanel() {
-		setLayout(new MigLayout("", "[grow][grow]", "[][][grow][][]"));
+		setLayout(new MigLayout("", "[grow][][]", "[][][grow][][]"));
 		
 		title = new JLabel(Constants.MEDICATIONS);
 		title.setFont(Constants.CUSTOM_FONT_BOLD.deriveFont(24f));
@@ -53,7 +55,7 @@ public class MedicationsPanel extends JPanel {
 		detailedSearchButton.setForeground(Color.WHITE);
 		detailedSearchButton.setFont(Constants.CUSTOM_FONT_BOLD);
 		detailedSearchButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
-		add(detailedSearchButton, "cell 1 1,alignx right, gapy 20 20");
+		add(detailedSearchButton, "cell 1 1,alignx right,gapy 20 20");
 		
 		scrollableTable = new ScrollableTable(this.extractRowsFromMedicationsList(Constants.MEDICATIONS_SORT_TYPES[0]));
 		add(scrollableTable, "cell 0 2 2 1,grow");
@@ -64,14 +66,21 @@ public class MedicationsPanel extends JPanel {
 			addMedicationButton.setForeground(Color.WHITE);
 			addMedicationButton.setFont(Constants.CUSTOM_FONT_BOLD);
 			addMedicationButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
-			add(addMedicationButton, "flowx,cell 0 3, gapy 20 0");
+			add(addMedicationButton, "flowx,cell 0 3 2 1, gapy 20 0");
 			
 			editMedicationButton = new JButton(new OpenChooseMedicationCodeDialog(Constants.EDIT_MEDICATION));
 			editMedicationButton.setBackground(Constants.LIGHT_BLUE);
 			editMedicationButton.setForeground(Color.WHITE);
 			editMedicationButton.setFont(Constants.CUSTOM_FONT_BOLD);
 			editMedicationButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
-			add(editMedicationButton, "cell 0 3, gapy 20 0");	
+			add(editMedicationButton, "cell 0 3 2 1, gapy 20 0");	
+			
+			deleteMedicationButton = new JButton(new DeleteMedicationAction(Constants.DELETE_MEDICATION, this.scrollableTable));
+			deleteMedicationButton.setBackground(Constants.LIGHT_BLUE);
+			deleteMedicationButton.setForeground(Color.WHITE);
+			deleteMedicationButton.setFont(Constants.CUSTOM_FONT_BOLD);
+			deleteMedicationButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+			add(deleteMedicationButton, "cell 0 3 2 1, gapy 20 0");	
 		}
 		
 		sortTypes.addItemListener(new ItemListener() {
@@ -118,6 +127,9 @@ public class MedicationsPanel extends JPanel {
 		});
 		
 		for (Medication medication : medications) {
+			if (ApplicationSingleton.getInstance().getLoggedInUser().getType() != UserType.ADMINISTRATOR && medication.isLogicallyDeleted()) {
+				continue;
+			}
 			rows.add(this.convertMedicationToRow(medication));
 		}
 		
@@ -137,6 +149,11 @@ public class MedicationsPanel extends JPanel {
 		row.getFields().add(manufacturerField);
 		row.getFields().add(priceField);
 		row.getFields().add(prescriptionNeededField);
+		
+		if (ApplicationSingleton.getInstance().getLoggedInUser().getType() == UserType.ADMINISTRATOR) {
+			Field deletedField = new Field(Constants.DELETED, medication.isLogicallyDeleted());
+			row.getFields().add(deletedField);
+		}
 		
 		return row;
 	}

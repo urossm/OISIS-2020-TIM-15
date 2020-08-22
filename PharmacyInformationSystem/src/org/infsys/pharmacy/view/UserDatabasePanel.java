@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.infsys.pharmacy.ApplicationSingleton;
+import org.infsys.pharmacy.controller.DeleteUserAction;
 import org.infsys.pharmacy.controller.OpenAddUserDialogAction;
 import org.infsys.pharmacy.model.User;
 import org.infsys.pharmacy.model.UserType;
@@ -28,6 +29,7 @@ public class UserDatabasePanel extends JPanel {
 	
 	private static final long serialVersionUID = -1259325517615871958L;
 	private JButton addNewUserButton;
+	private JButton deleteUserButton;
 	private JComboBox<String> sortTypes;
 	private JLabel title;
 	private ScrollableTable scrollableTable;
@@ -55,6 +57,14 @@ public class UserDatabasePanel extends JPanel {
 		add(addNewUserButton, "cell 1 1,alignx right, gapy 20 20");
 
 		scrollableTable = new ScrollableTable(this.extractRowsFromUsersList(Constants.USER_SORT_TYPES[0]));
+		
+		deleteUserButton = new JButton(new DeleteUserAction(Constants.DELETE_USER, this.scrollableTable));
+		deleteUserButton.setBackground(Constants.LIGHT_BLUE);
+		deleteUserButton.setForeground(Color.WHITE);
+		deleteUserButton.setFont(Constants.CUSTOM_FONT_BOLD);
+		deleteUserButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+		add(deleteUserButton, "cell 1 1,alignx right, gapy 20 20, gapx 20 0");
+
 		add(scrollableTable, "cell 0 2 2 1,grow");
 		
 		sortTypes.addItemListener(new ItemListener() {
@@ -71,6 +81,10 @@ public class UserDatabasePanel extends JPanel {
 	
 	public void addRow(User user) {
 		this.scrollableTable.addRow(this.convertUserToRow(user));
+	}
+	
+	public void updateRows() {
+		this.scrollableTable.updateModel(extractRowsFromUsersList((String) sortTypes.getSelectedItem()));
 	}
 	
 	public List<Row> extractRowsFromUsersList(String sortBy) {
@@ -106,12 +120,14 @@ public class UserDatabasePanel extends JPanel {
 		Field lastNameField = new Field(Constants.LASTNAME, user.getLastName());
 		Field usernameField = new Field(Constants.USERNAME, user.getUsername());
 		Field userTypeField = new Field(Constants.USER_TYPE, user.getType());
+		Field deletedField = new Field(Constants.DELETED, user.isLogicallyDeleted());
 		
 		Row row = new Row();
 		row.getFields().add(nameField);
 		row.getFields().add(lastNameField);
 		row.getFields().add(usernameField);
 		row.getFields().add(userTypeField);
+		row.getFields().add(deletedField);		
 		
 		return row;
 	}

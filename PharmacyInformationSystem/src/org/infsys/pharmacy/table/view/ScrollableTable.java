@@ -37,4 +37,14 @@ public class ScrollableTable extends JScrollPane {
 	public List<Row> getRows() {
 		return this.tableModel.getRows();
 	}
+
+	public Row getSelectedRow() {
+		int rowIndex = this.table.getSelectedRow();
+		
+		if (rowIndex == -1) {
+			return null;
+		}
+		
+		return this.getRows().get(rowIndex);
+	}
 }

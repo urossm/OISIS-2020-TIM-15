@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.infsys.pharmacy.ApplicationSingleton;
+import org.infsys.pharmacy.controller.DeletePrescriptionAction;
 import org.infsys.pharmacy.controller.OpenAddPrescriptionDialogAction;
 import org.infsys.pharmacy.controller.OpenPrescriptionsDetailedSearchDialogAction;
 import org.infsys.pharmacy.model.Prescription;
@@ -33,6 +34,7 @@ public class PrescriptionsPanel extends JPanel {
 	private JLabel title;
 	private ScrollableTable scrollableTable;
 	private JButton addPrescriptionButton;
+	private JButton deletePrescriptionButton;
 
 	public PrescriptionsPanel() {
 		setLayout(new MigLayout("", "[grow][grow]", "[][][grow][][]"));
@@ -63,7 +65,14 @@ public class PrescriptionsPanel extends JPanel {
 			addPrescriptionButton.setForeground(Color.WHITE);
 			addPrescriptionButton.setFont(Constants.CUSTOM_FONT_BOLD);
 			addPrescriptionButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
-			add(addPrescriptionButton, "flowx,cell 0 3, gapy 20 0");	
+			add(addPrescriptionButton, "flowx,cell 0 3 2 1, gapy 20 0");
+			
+			deletePrescriptionButton = new JButton(new DeletePrescriptionAction(Constants.DELETE_PRESCRIPTION, this.scrollableTable));
+			deletePrescriptionButton.setBackground(Constants.LIGHT_BLUE);
+			deletePrescriptionButton.setForeground(Color.WHITE);
+			deletePrescriptionButton.setFont(Constants.CUSTOM_FONT_BOLD);
+			deletePrescriptionButton.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
+			add(deletePrescriptionButton, "flowx,cell 0 3 2 1, gapy 20 0");
 		}
 		
 		sortTypes.addItemListener(new ItemListener() {
@@ -110,6 +119,9 @@ public class PrescriptionsPanel extends JPanel {
 		});
 		
 		for (Prescription prescription : prescriptions) {
+			if (ApplicationSingleton.getInstance().getLoggedInUser().getType() != UserType.ADMINISTRATOR && prescription.isLogicallyDeleted()) {
+				continue;
+			}
 			rows.add(this.convertPrescriptionToRow(prescription));
 		}
 		
@@ -131,6 +143,11 @@ public class PrescriptionsPanel extends JPanel {
 		row.getFields().add(medicationsWithAmountsField);
 		row.getFields().add(dateAndTimeField);
 		row.getFields().add(totalPriceField);
+		
+		if (ApplicationSingleton.getInstance().getLoggedInUser().getType() == UserType.ADMINISTRATOR) {
+			Field deletedField = new Field(Constants.DELETED, prescription.isLogicallyDeleted());
+			row.getFields().add(deletedField);
+		}
 		
 		return row;
 	}
