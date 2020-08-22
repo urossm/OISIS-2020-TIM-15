@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.infsys.pharmacy.model.Bill;
 import org.infsys.pharmacy.model.Medication;
 import org.infsys.pharmacy.model.Prescription;
 import org.infsys.pharmacy.model.User;
@@ -23,6 +24,7 @@ public class ApplicationSingleton {
 	private Map<String, User> users;
 	private Map<String, Medication> medications;
 	private List<Prescription> prescriptions;
+	private List<Bill> bills;
 	private User loggedInUser;
 	
 	private ApplicationSingleton() {	
@@ -71,6 +73,17 @@ public class ApplicationSingleton {
 
 	public void setPrescriptions(List<Prescription> prescriptions) {
 		this.prescriptions = prescriptions;
+	}
+
+	public List<Bill> getBills() {
+		if (this.bills == null) {
+			this.bills = new ArrayList<>();
+		}
+		return bills;
+	}
+
+	public void setBills(List<Bill> bills) {
+		this.bills = bills;
 	}
 
 	public User getLoggedInUser() {

@@ -31,6 +31,7 @@ public class Constants {
 	public static final String USERS_PATH = "data/users.obj";
 	public static final String MEDICATIONS_PATH = "data/medicines.obj";
 	public static final String PRESCRIPTIONS_PATH = "data/prescriptions.obj";
+	public static final String BILLS_PATH = "data/bills.obj";
 	public static final String CATEGORIES = "Categories";
 	public static final String MEDICATIONS = "Medications";
 	public static final String PRESCRIPTIONS = "Prescriptions";
@@ -103,6 +104,17 @@ public class Constants {
 	public static final String MEDICATION_DELETE_CONFIRMATION_MSG = "Are you sure you want to delete selected medication? "
 			+ "If you do so, all prescriptions with selected medication will be also removed.";
 	public static final String PRESCRIPTION_DELETE_CONFIRMATION_MSG = "Are you sure you want to delete selected prescription?";
+	public static final String SALE_OF_MEDICATIONS = "Sale of medications";
+	public static final String PRESCRIPTION_CODE = "Prescription code";
+	public static final String TOTAL = "Total";
+	public static final String CANCEL = "Cancel";
+	public static final String CONFIRM = "Confirm";
+	public static final String CANCEL_CONFIRMATION_TITLE = "Cancel confirmation"; 
+	public static final String ORDER_CANCEL_CONFIRMATION_MSG = "Are you sure you want to cancel current order?";
+	public static final String PRESCRIPTION_CODE_FORMAT_ERROR_MSG = "Wrong format of entered prescription code!";
+	public static final String PRESCRIPTION_CODE_REQUIRED = "Prescription code must be entered!";
+	public static final String PRESCRIPTION_NOT_EXISTS = "Prescription with entered code does not exist!";
+	public static final String EMPTY_CART = "Cart can not be empty!";
 	
 	//String arrays
 	public static final String[] USER_SORT_TYPES = new String[] {NAME, LASTNAME, USER_TYPE};

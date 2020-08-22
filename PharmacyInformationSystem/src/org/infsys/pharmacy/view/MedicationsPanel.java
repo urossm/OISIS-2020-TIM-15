@@ -140,7 +140,7 @@ public class MedicationsPanel extends JPanel {
 		Field codeField = new Field(Constants.CODE, medication.getCode());
 		Field nameField = new Field(Constants.NAME, medication.getName());
 		Field manufacturerField = new Field(Constants.MANUFACTURER, medication.getManufacturer());
-		Field priceField = new Field(Constants.PRICE, medication.getPrice());
+		Field priceField = new Field(Constants.PRICE, "$" + medication.getPrice());
 		Field prescriptionNeededField = new Field(Constants.PRESCRIPTION_NEEDED, medication.isPrescriptionNeeded());
 		
 		Row row = new Row();

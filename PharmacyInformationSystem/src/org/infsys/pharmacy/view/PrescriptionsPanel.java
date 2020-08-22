@@ -134,7 +134,7 @@ public class PrescriptionsPanel extends JPanel {
 		Field doctorIdField = new Field(Constants.DOCTOR_ID, prescription.getDoctorId());
 		Field medicationsWithAmountsField = new Field(Constants.MEDICATIONS, prescription.medicationsWithAmountsToString());
 		Field dateAndTimeField = new Field(Constants.DATE_TIME, prescription.getDateAndTime().format(Constants.DATE_FORMAT));
-		Field totalPriceField = new Field(Constants.TOTAL_PRICE, prescription.getTotalPrice());
+		Field totalPriceField = new Field(Constants.TOTAL_PRICE, "$" + prescription.getTotalPrice());
 		
 		Row row = new Row();
 		row.getFields().add(codeField);
